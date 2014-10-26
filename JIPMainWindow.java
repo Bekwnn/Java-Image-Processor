@@ -9,10 +9,15 @@ public class JIPMainWindow extends JFrame{
 		mainPanel.setLayout(new BorderLayout());
 		
 		BasicToolBox basicToolBox = new BasicToolBox();
-		getContentPane().add(basicToolBox, BorderLayout.WEST);
+		mainPanel.add(basicToolBox, BorderLayout.WEST);
 		
-		MenuBar menu = new MenuBar();
-		setJMenuBar(menu);
+		MainImagePanel mainImageWindow = new MainImagePanel();
+		mainPanel.add(mainImageWindow, BorderLayout.CENTER);
+		
+		MenuBar menuBar = new MenuBar();
+		setJMenuBar(menuBar);
+		
+		getContentPane().add(mainPanel);
 		pack();
 	}
 }

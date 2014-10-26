@@ -12,19 +12,21 @@ public class MenuBar extends JMenuBar {
 	
 	private void addFileMenu() {
 		JMenu fileMenu = new JMenu("File");
+		add(fileMenu);
 		
+		JMenuItem newMenuItem = new JMenuItem("New");
 		JMenuItem openMenuItem = new JMenuItem("Open");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem saveAsMenuItem = new JMenuItem("Save As");
+		fileMenu.add(newMenuItem);
 		fileMenu.add(openMenuItem);
 		fileMenu.add(saveMenuItem);
 		fileMenu.add(saveAsMenuItem);
-		
-		add(fileMenu);
 	}
 	
 	private void addEditMenu() {
 		JMenu editMenu = new JMenu("Edit");
+		add(editMenu);
 	
 		JMenuItem cutMenuItem = new JMenuItem("Cut");
 		JMenuItem copyMenuItem = new JMenuItem("Copy");
@@ -32,21 +34,19 @@ public class MenuBar extends JMenuBar {
 		editMenu.add(cutMenuItem);
 		editMenu.add(copyMenuItem);
 		editMenu.add(pasteMenuItem);
-		
-		add(editMenu);
 	}
 	
 	private void addViewMenu() {
 		JMenu viewMenu = new JMenu("View");
+		add(viewMenu);
 		
 		JMenuItem toolBoxMenuItem = new JMenuItem("Tool Box");
 		viewMenu.add(toolBoxMenuItem);
-		
-		add(viewMenu);
 	}
 	
 	private void addHelpMenu() {
 		JMenu helpMenu = new JMenu("Help");
+		add(helpMenu);
 		
 		JMenuItem shortcutsMenuItem = new JMenuItem("Short-cuts");
 		JMenuItem docMenuItem = new JMenuItem("Documentation");
@@ -56,7 +56,5 @@ public class MenuBar extends JMenuBar {
 		helpMenu.add(docMenuItem);
 		helpMenu.add(versionMenuItem);
 		helpMenu.add(aboutMenuItem);
-		
-		add(helpMenu);
 	}
 }

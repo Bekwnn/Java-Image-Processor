@@ -21,7 +21,7 @@ public class MainImagePanel extends JPanel {
 	}
 	
 	public void updateCombinedImage() {
-		//change later to make it the combination of layers
+		//change later to make it the combination layers
 		combinedImage = new BufferedImage(JIP.iWidth, JIP.iHeight, BufferedImage.TYPE_INT_ARGB);
 	}
 }

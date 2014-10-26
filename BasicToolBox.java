@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.imageio.*;
 
 public class BasicToolBox extends JToolBar {
+	private Image boxSelectIcon;
 	private Image brushIcon;
 	private Image eraserIcon;
 	private Image lineIcon;
@@ -16,6 +17,7 @@ public class BasicToolBox extends JToolBar {
 		
 		getIconArt();
 		
+		add(new JButton(new ImageIcon(boxSelectIcon)));
 		add(new JButton(new ImageIcon(brushIcon)));
 		add(new JButton(new ImageIcon(eraserIcon)));
 		add(new JButton(new ImageIcon(lineIcon)));
@@ -26,6 +28,7 @@ public class BasicToolBox extends JToolBar {
 	
 	private void getIconArt() {
 		try {
+			boxSelectIcon = ImageIO.read(getClass().getResource("icons/I_BoxSelectTool.png"));
 			brushIcon = ImageIO.read(getClass().getResource("icons/I_BrushTool.png"));
 			eraserIcon = ImageIO.read(getClass().getResource("icons/I_EraserTool.png"));
 			lineIcon = ImageIO.read(getClass().getResource("icons/I_LineTool.png"));

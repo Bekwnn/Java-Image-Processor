@@ -8,8 +8,8 @@ public class JIPMainWindow extends JFrame{
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		
-		BasicToolBox basicToolBox = new BasicToolBox();
-		mainPanel.add(basicToolBox, BorderLayout.WEST);
+		BasicToolbox basicToolbox = new BasicToolbox();
+		mainPanel.add(basicToolbox, BorderLayout.WEST);
 		
 		MainImagePanel mainImageWindow = new MainImagePanel();
 		mainPanel.add(mainImageWindow, BorderLayout.CENTER);

@@ -1,6 +1,9 @@
 import javax.swing.*;
 
 public class MenuBar extends JMenuBar {
+
+	private MenuListener menuListener = new MenuListener();
+	
 	public MenuBar() {
 		super();
 		//main menus
@@ -18,10 +21,10 @@ public class MenuBar extends JMenuBar {
 		JMenuItem openMenuItem = new JMenuItem("Open");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem saveAsMenuItem = new JMenuItem("Save As");
-		fileMenu.add(newMenuItem);
-		fileMenu.add(openMenuItem);
-		fileMenu.add(saveMenuItem);
-		fileMenu.add(saveAsMenuItem);
+		addMenuItem(newMenuItem, fileMenu);
+		addMenuItem(openMenuItem, fileMenu);
+		addMenuItem(saveMenuItem, fileMenu);
+		addMenuItem(saveAsMenuItem, fileMenu);
 	}
 	
 	private void addEditMenu() {
@@ -31,17 +34,17 @@ public class MenuBar extends JMenuBar {
 		JMenuItem cutMenuItem = new JMenuItem("Cut");
 		JMenuItem copyMenuItem = new JMenuItem("Copy");
 		JMenuItem pasteMenuItem = new JMenuItem("Paste");
-		editMenu.add(cutMenuItem);
-		editMenu.add(copyMenuItem);
-		editMenu.add(pasteMenuItem);
+		addMenuItem(cutMenuItem, editMenu);
+		addMenuItem(copyMenuItem, editMenu);
+		addMenuItem(pasteMenuItem, editMenu);
 	}
 	
 	private void addViewMenu() {
 		JMenu viewMenu = new JMenu("View");
 		add(viewMenu);
 		
-		JMenuItem toolBoxMenuItem = new JMenuItem("Tool Box");
-		viewMenu.add(toolBoxMenuItem);
+		JMenuItem toolBoxMenuItem = new JMenuItem("Toolbox");
+		addMenuItem(toolBoxMenuItem, viewMenu);
 	}
 	
 	private void addHelpMenu() {
@@ -52,9 +55,15 @@ public class MenuBar extends JMenuBar {
 		JMenuItem docMenuItem = new JMenuItem("Documentation");
 		JMenuItem versionMenuItem = new JMenuItem("Version");
 		JMenuItem aboutMenuItem = new JMenuItem("About");
-		helpMenu.add(shortcutsMenuItem);
-		helpMenu.add(docMenuItem);
-		helpMenu.add(versionMenuItem);
-		helpMenu.add(aboutMenuItem);
+		addMenuItem(shortcutsMenuItem, helpMenu);
+		addMenuItem(docMenuItem, helpMenu);
+		addMenuItem(versionMenuItem, helpMenu);
+		addMenuItem(aboutMenuItem, helpMenu);
+	}
+	
+	private void addMenuItem(JMenuItem jmItem, JMenu jMenu) {
+		jmItem.addActionListener(menuListener);
+		jmItem.setActionCommand(jmItem.getText());
+		jMenu.add(jmItem);
 	}
 }

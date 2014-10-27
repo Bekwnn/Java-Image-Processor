@@ -3,7 +3,7 @@ import java.io.*;
 import javax.swing.*;
 import javax.imageio.*;
 
-public class BasicToolBox extends JToolBar {
+public class BasicToolbox extends JToolBar {
 	private Image boxSelectIcon;
 	private Image brushIcon;
 	private Image eraserIcon;
@@ -12,7 +12,7 @@ public class BasicToolBox extends JToolBar {
 	private Image ellipseIcon;
 	private Image bucketIcon;
 	
-	public BasicToolBox() {
+	public BasicToolbox() {
 		super(JToolBar.VERTICAL);
 		
 		getIconArt();

@@ -1,6 +1,6 @@
 public class JIP {
-	public static int iWidth = 300;
-	public static int iHeight = 300;
+	public static int iWidth = 500;
+	public static int iHeight = 500;
 	private static JIPMainWindow mainWindow;
 	public static void main(String[] args) {
 		mainWindow = new JIPMainWindow();

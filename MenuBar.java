@@ -1,10 +1,10 @@
 import javax.swing.*;
 
 public class MenuBar extends JMenuBar {
-
+	private static MenuBar instance_;
 	private MenuListener menuListener = new MenuListener();
 	
-	public MenuBar() {
+	private MenuBar() {
 		super();
 		//main menus
 		addFileMenu();
@@ -67,5 +67,10 @@ public class MenuBar extends JMenuBar {
 		jmItem.addActionListener(menuListener);
 		jmItem.setActionCommand(jmItem.getText());
 		jMenu.add(jmItem);
+	}
+	
+	public static MenuBar getInstance() {
+		if (instance_ == null) instance_ = new MenuBar();
+		return instance_;
 	}
 }

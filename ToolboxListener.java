@@ -32,5 +32,7 @@ public class ToolboxListener implements ActionListener {
 			g2d.setColor(new Color(0.0f,0.0f,1.0f));
 		
 		g2d.draw(new Rectangle2D.Double(i*10,i*10,20,20));
+		LayerBox lb = LayerBox.getInstance();
+		lb.updateLayerBox();
 	}
 }

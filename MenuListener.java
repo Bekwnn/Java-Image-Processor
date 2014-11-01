@@ -38,5 +38,7 @@ public class MenuListener implements ActionListener {
 		MainImagePanel.layers.add(newbi);
 		MainImagePanel.currentLayer = newbi;
 		MainImagePanel.currentLayerIndex = MainImagePanel.layers.size()-1;
+		LayerBox lb = LayerBox.getInstance();
+		lb.updateLayerBox();
 	}
 }

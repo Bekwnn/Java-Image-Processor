@@ -2,26 +2,40 @@ import java.awt.*;
 import javax.swing.*;
 
 public class JIPMainWindow extends JFrame{
-	public JIPMainWindow () {
+	private static JIPMainWindow instance_;
+	public BasicToolbox basicToolbox;
+	public MainImagePanel mainImagePanel;
+	public LayerBox layerBox;
+	
+	private JIPMainWindow () {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		
-		BasicToolbox basicToolbox = new BasicToolbox();
+		basicToolbox = new BasicToolbox();
 		mainPanel.add(basicToolbox, BorderLayout.WEST);
 		
-		MainImagePanel mainImageWindow = new MainImagePanel();
-		mainPanel.add(mainImageWindow, BorderLayout.CENTER);
+		mainImagePanel = MainImagePanel.getInstance();
+		mainPanel.add(mainImagePanel, BorderLayout.CENTER);
+		
+		ToolListener toolListener = new ToolListener(Cursor.CROSSHAIR_CURSOR, mainPanel.getBounds());
+		mainPanel.addMouseListener(toolListener);
+		mainPanel.addMouseMotionListener(toolListener);
 		
 		//leave layerbox after mainImagePanel so it updates
-		LayerBox layerBox = new LayerBox();
+		layerBox = LayerBox.getInstance();
 		mainPanel.add(layerBox, BorderLayout.EAST);
 		
-		MenuBar menuBar = new MenuBar();
+		MenuBar menuBar = MenuBar.getInstance();
 		setJMenuBar(menuBar);
 		
 		getContentPane().add(mainPanel);
 		pack();
+	}
+	
+	public static JIPMainWindow getInstance() {
+		if (instance_ == null) instance_ = new JIPMainWindow();
+		return instance_;
 	}
 }

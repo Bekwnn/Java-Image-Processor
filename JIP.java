@@ -3,7 +3,7 @@ public class JIP {
 	public static int iHeight = 500;
 	private static JIPMainWindow mainWindow;
 	public static void main(String[] args) {
-		mainWindow = new JIPMainWindow();
+		mainWindow = JIPMainWindow.getInstance();
 		mainWindow.setSize(600,600);
 		mainWindow.setTitle("Java Image Processor");
 		mainWindow.setVisible(true);

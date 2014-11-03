@@ -16,7 +16,7 @@ public class MainImagePanel extends JPanel {
 	public Color bgColor = Color.WHITE;
 	
 	private MainImagePanel() {
-		newCombinedImage();
+		initializeMIP();
 	}
 	
 	@Override
@@ -37,7 +37,8 @@ public class MainImagePanel extends JPanel {
 		repaint();
 	}
 	
-	public void newCombinedImage() {
+	//performs constructor initialization, reused when starting a new file
+	private void initializeMIP() {
 		layers = new ArrayList<BufferedImage>();
 		BufferedImage newbi = new BufferedImage(JIP.iWidth, JIP.iHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = newbi.createGraphics();
@@ -47,6 +48,15 @@ public class MainImagePanel extends JPanel {
 		currentLayerIndex = layers.size()-1;
 		updateCombinedImage();
 		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+	}
+	
+	public void newCombinedImage() {
+		initializeMIP();
+		LayerBox.getInstance().updateLayerBox();
+	}
+	
+	public void updateColorSelection() {
+		
 	}
 	
 	public static MainImagePanel getInstance() {

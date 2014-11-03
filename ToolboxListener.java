@@ -69,13 +69,7 @@ public class ToolboxListener implements ActionListener {
 		MainImagePanel mip = MainImagePanel.getInstance();
 		Graphics2D g2d = mip.currentLayer.createGraphics();
 		int i = mip.currentLayerIndex;
-		if (i%3 == 0)
-			g2d.setColor(new Color(1.0f,0.0f,0.0f));
-		else if (i%3 == 1)
-			g2d.setColor(new Color(0.0f,1.0f,0.0f));
-		else if (i%3 == 2)
-			g2d.setColor(new Color(0.0f,0.0f,1.0f));
-		
+		g2d.setColor(BasicToolbox.getInstance().getPrimaryColor());
 		g2d.fill(new Rectangle2D.Double(i*20,i*20,40,40));
 		LayerBox lb = LayerBox.getInstance();
 		lb.updateLayerBox();

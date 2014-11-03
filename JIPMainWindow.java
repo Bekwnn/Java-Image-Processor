@@ -13,7 +13,7 @@ public class JIPMainWindow extends JFrame{
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		
-		basicToolbox = new BasicToolbox();
+		basicToolbox = BasicToolbox.getInstance();
 		mainPanel.add(basicToolbox, BorderLayout.WEST);
 		
 		mainImagePanel = MainImagePanel.getInstance();

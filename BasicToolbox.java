@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.imageio.*;
 
 public class BasicToolbox extends JToolBar {
+	private static BasicToolbox instance_;
+
 	public enum Tools {
 		BOXSELECT,
 		BRUSH,
@@ -24,7 +26,10 @@ public class BasicToolbox extends JToolBar {
 	
 	private ToolboxListener toolboxListener = ToolboxListener.getInstance();
 	
-	public BasicToolbox() {
+	private ColorChooserButton primaryColor;
+	private ColorChooserButton secondaryColor;
+	
+	private BasicToolbox() {
 		super(JToolBar.VERTICAL);
 		
 		getIconArt();
@@ -42,6 +47,14 @@ public class BasicToolbox extends JToolBar {
 		addToToolbox(rect, Tools.RECT.name());
 		addToToolbox(ellipse, Tools.ELLIPSE.name());
 		addToToolbox(bucket, Tools.BUCKET.name());
+		
+		//add some space before color chooser
+		add(Box.createRigidArea(new Dimension(2,31)));
+		
+		primaryColor = new ColorChooserButton(Color.BLACK);
+		add(primaryColor);
+		secondaryColor = new ColorChooserButton(Color.WHITE);
+		add(secondaryColor);
 	}
 	
 	private void getIconArt() {
@@ -63,4 +76,12 @@ public class BasicToolbox extends JToolBar {
 		button.setActionCommand(command);
 		add(button);
 	}
+	
+	public static BasicToolbox getInstance() {
+		if (instance_ == null) instance_ = new BasicToolbox();
+		return instance_;
+	}
+	
+	public Color getSecondaryColor() { return secondaryColor.getColor(); }
+	public Color getPrimaryColor() { return primaryColor.getColor(); }
 }

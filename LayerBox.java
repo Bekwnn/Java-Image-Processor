@@ -16,7 +16,7 @@ public class LayerBox extends JToolBar{
 	public void updateLayerBox() {
 		int j = 0;
 		removeAll();
-		for (BufferedImage i : MainImagePanel.layers) {
+		for (BufferedImage i : MainImagePanel.getInstance().layers) {
 			j++;
 			BufferedImage newi = new BufferedImage(LAYER_ICON_SIZE, LAYER_ICON_SIZE, BufferedImage.TYPE_INT_RGB);
 			Graphics2D g2d = newi.createGraphics();

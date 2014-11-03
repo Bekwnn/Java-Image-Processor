@@ -8,22 +8,15 @@ import java.awt.event.*;
 import javax.imageio.*;
 
 public class MainImagePanel extends JPanel {
-	protected BufferedImage combinedImage;
+	private BufferedImage combinedImage;
 	private static MainImagePanel instance_;
-	public static ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
-	public static BufferedImage currentLayer;
-	public static int currentLayerIndex;
-	public static Color bgColor = Color.WHITE;
+	public ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
+	public BufferedImage currentLayer;
+	public int currentLayerIndex;
+	public Color bgColor = Color.WHITE;
 	
 	private MainImagePanel() {
-		BufferedImage newbi = new BufferedImage(JIP.iWidth, JIP.iHeight, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = newbi.createGraphics();
-		
-		layers.add(newbi);
-		currentLayer = newbi;
-		currentLayerIndex = layers.size()-1;
-		updateCombinedImage();
-		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+		newCombinedImage();
 	}
 	
 	@Override
@@ -42,6 +35,18 @@ public class MainImagePanel extends JPanel {
 		}
 		validate();
 		repaint();
+	}
+	
+	public void newCombinedImage() {
+		layers = new ArrayList<BufferedImage>();
+		BufferedImage newbi = new BufferedImage(JIP.iWidth, JIP.iHeight, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = newbi.createGraphics();
+		
+		layers.add(newbi);
+		currentLayer = newbi;
+		currentLayerIndex = layers.size()-1;
+		updateCombinedImage();
+		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 	}
 	
 	public static MainImagePanel getInstance() {

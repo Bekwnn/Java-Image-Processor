@@ -22,7 +22,7 @@ public class BasicToolbox extends JToolBar {
 	private Image ellipseIcon;
 	private Image bucketIcon;
 	
-	private ToolboxListener toolboxListener = new ToolboxListener();
+	private ToolboxListener toolboxListener = ToolboxListener.getInstance();
 	
 	public BasicToolbox() {
 		super(JToolBar.VERTICAL);

@@ -12,6 +12,7 @@ public class MainImagePanel extends JPanel {
 	private static MainImagePanel instance_;
 	private ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
 	public BufferedImage currentLayer;
+	private BufferedImage graphicsLayer;
 	private int currentLayerIndex;
 	private Color bgColor = Color.WHITE;
 	
@@ -33,8 +34,16 @@ public class MainImagePanel extends JPanel {
 		for (BufferedImage i : layers) {
 			g.drawImage(i, 0, 0, null);
 		}
+		
+		if (graphicsLayer != null)
+			g.drawImage(graphicsLayer, 0, 0, null);
+			
 		validate();
 		repaint();
+	}
+	
+	public void setGraphicsLayer(BufferedImage i) {
+		graphicsLayer = i;
 	}
 	
 	//performs constructor initialization, reused when starting a new file

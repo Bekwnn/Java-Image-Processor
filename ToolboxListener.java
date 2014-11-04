@@ -13,7 +13,6 @@ public class ToolboxListener implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand() + " pressed.");
-		drawRect();
 		if (e.getActionCommand() == "BOXSELECT") {
 			boxSelect();
 		}
@@ -37,47 +36,22 @@ public class ToolboxListener implements ActionListener {
 		}
 	}
 	
-	void boxSelect() {
-	
-	}
-	
-	void brush() {
-	
-	}
-	
-	void eraser() {
-	
-	}
-	
-	void line() {
+	private void swapTool(Tool newTool) {
 		MainImagePanel mip = MainImagePanel.getInstance();
 		mip.removeMouseListener(selectedTool);
 		mip.removeMouseMotionListener(selectedTool);
-		selectedTool = new LineTool();
+		selectedTool = newTool;
 		mip.addMouseListener(selectedTool);
 		mip.addMouseMotionListener(selectedTool);
 	}
 	
-	void rect() {
-	
-	}
-	
-	void ellipse() {
-	
-	}
-	
-	void bucket() {
-	
-	}
-	
-	public void drawRect() {
-		MainImagePanel mip = MainImagePanel.getInstance();
-		Graphics2D g2d = mip.getLayerGraphics();
-		g2d.setColor(BasicToolbox.getInstance().getPrimaryColor());
-		//g2d.fill(new Rectangle2D.Double(i*20,i*20,40,40));
-		LayerBox lb = LayerBox.getInstance();
-		lb.updateLayerBox();
-	}
+	private void boxSelect() { }
+	private void brush() { }
+	private void eraser() { }
+	private void line() { swapTool(new LineTool()); }
+	private void rect() { swapTool(new RectTool()); }
+	private void ellipse() { swapTool(new EllipseTool()); }
+	private void bucket() { }
 	
 	public static ToolboxListener getInstance() {
 		if (instance_ == null) instance_ = new ToolboxListener();

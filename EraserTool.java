@@ -2,10 +2,9 @@ import java.awt.event.MouseEvent;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public class LineTool extends Tool {
-	private int startX, startY;
+public class EraserTool extends Tool {
 	
-	public LineTool() {}
+	public EraserTool() {}
 	
 	public void mousePressed(MouseEvent e) {
 		startX = e.getX();
@@ -14,11 +13,7 @@ public class LineTool extends Tool {
 	}
 	
 	public void mouseReleased(MouseEvent e) {
-		MainImagePanel mip = MainImagePanel.getInstance();
-		Graphics2D g2d = mip.getLayerGraphics();
-		g2d.setColor(BasicToolbox.getInstance().getPrimaryColor());
-		g2d.drawLine(startX, startY, e.getX(), e.getY());
-		mip.updateCombinedImage();
+		mouseDragged(e);
 	}
 	
 	public void mouseDragged(MouseEvent e) {

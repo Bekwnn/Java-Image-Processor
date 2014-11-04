@@ -11,6 +11,7 @@ public class ColorChooserButton extends JButton {
 	private Color color;
 	public ColorChooserButton(Color startColor) {
 		super();
+		color = startColor;
 		setBackground(startColor);
 		setMaximumSize(new Dimension(30,30));
 		setPreferredSize(new Dimension(30,30));

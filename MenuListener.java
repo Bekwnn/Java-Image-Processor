@@ -39,12 +39,6 @@ public class MenuListener implements ActionListener {
 		BufferedImage newbi = new BufferedImage(JIP.iWidth, JIP.iHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = newbi.createGraphics();
 		MainImagePanel mip = MainImagePanel.getInstance();
-		int i = mip.layers.size();
-		
-		mip.layers.add(newbi);
-		mip.currentLayer = newbi;
-		mip.currentLayerIndex = mip.layers.size()-1;
-		LayerBox lb = LayerBox.getInstance();
-		lb.updateLayerBox();
+		mip.addLayer(newbi);
 	}
 }

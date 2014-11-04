@@ -10,10 +10,10 @@ import javax.imageio.*;
 public class MainImagePanel extends JPanel {
 	private BufferedImage combinedImage;
 	private static MainImagePanel instance_;
-	public ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
+	private ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
 	public BufferedImage currentLayer;
-	public int currentLayerIndex;
-	public Color bgColor = Color.WHITE;
+	private int currentLayerIndex;
+	private Color bgColor = Color.WHITE;
 	
 	private MainImagePanel() {
 		initializeMIP();
@@ -55,8 +55,20 @@ public class MainImagePanel extends JPanel {
 		LayerBox.getInstance().updateLayerBox();
 	}
 	
-	public void updateColorSelection() {
-		
+	public void addLayer(BufferedImage i) {
+		layers.add(i);
+		currentLayer = i;
+		currentLayerIndex = layers.size()-1;
+		LayerBox lb = LayerBox.getInstance();
+		lb.updateLayerBox();
+	}
+	
+	public Graphics2D getLayerGraphics() {
+		return currentLayer.createGraphics();
+	}
+	
+	public ArrayList<BufferedImage> getLayers() {
+		return layers;
 	}
 	
 	public static MainImagePanel getInstance() {

@@ -50,7 +50,12 @@ public class ToolboxListener implements ActionListener {
 	}
 	
 	void line() {
-	
+		MainImagePanel mip = MainImagePanel.getInstance();
+		mip.removeMouseListener(selectedTool);
+		mip.removeMouseMotionListener(selectedTool);
+		selectedTool = new LineTool();
+		mip.addMouseListener(selectedTool);
+		mip.addMouseMotionListener(selectedTool);
 	}
 	
 	void rect() {
@@ -67,10 +72,9 @@ public class ToolboxListener implements ActionListener {
 	
 	public void drawRect() {
 		MainImagePanel mip = MainImagePanel.getInstance();
-		Graphics2D g2d = mip.currentLayer.createGraphics();
-		int i = mip.currentLayerIndex;
+		Graphics2D g2d = mip.getLayerGraphics();
 		g2d.setColor(BasicToolbox.getInstance().getPrimaryColor());
-		g2d.fill(new Rectangle2D.Double(i*20,i*20,40,40));
+		//g2d.fill(new Rectangle2D.Double(i*20,i*20,40,40));
 		LayerBox lb = LayerBox.getInstance();
 		lb.updateLayerBox();
 	}

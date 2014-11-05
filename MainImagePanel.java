@@ -64,6 +64,12 @@ public class MainImagePanel extends JPanel {
 		LayerBox.getInstance().updateLayerBox();
 	}
 	
+	public void clearGraphicsLayer() {
+		Graphics2D g2d = graphicsLayer.createGraphics();
+		g2d.setComposite(AlphaComposite.Clear);
+		g2d.fillRect(0, 0, JIP.iWidth, JIP.iHeight);
+	}
+	
 	public void addLayer(BufferedImage i) {
 		layers.add(i);
 		currentLayer = i;

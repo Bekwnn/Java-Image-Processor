@@ -47,7 +47,7 @@ public class ToolboxListener implements ActionListener {
 	
 	private void boxSelect() { }
 	private void brush() { }
-	private void eraser() { }
+	private void eraser() { swapTool(new EraserTool()); }
 	private void line() { swapTool(new LineTool()); }
 	private void rect() { swapTool(new RectTool()); }
 	private void ellipse() { swapTool(new EllipseTool()); }

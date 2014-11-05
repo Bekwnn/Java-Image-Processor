@@ -20,6 +20,7 @@ public class EraserTool extends Tool {
 	
 	public void mouseReleased(MouseEvent e) {
 		mouseDragged(e);
+		LayerBox.getInstance().updateLayerBox();
 	}
 	
 	public void mouseDragged(MouseEvent e) {

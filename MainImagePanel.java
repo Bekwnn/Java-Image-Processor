@@ -23,7 +23,6 @@ public class MainImagePanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		updateCombinedImage();
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(combinedImage, 0, 0, bgColor, null);
 	}
@@ -80,6 +79,10 @@ public class MainImagePanel extends JPanel {
 	
 	public Graphics2D getLayerGraphics() {
 		return currentLayer.createGraphics();
+	}
+	
+	public BufferedImage getLayer() {
+		return currentLayer;
 	}
 	
 	public ArrayList<BufferedImage> getLayers() {

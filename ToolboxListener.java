@@ -45,13 +45,13 @@ public class ToolboxListener implements ActionListener {
 		mip.addMouseMotionListener(selectedTool);
 	}
 	
-	private void boxSelect() { }
-	private void brush() { }
+	private void boxSelect() { swapTool(new BoxSelectTool()); }
+	private void brush() { swapTool(new BrushTool()); }
 	private void eraser() { swapTool(new EraserTool()); }
 	private void line() { swapTool(new LineTool()); }
 	private void rect() { swapTool(new RectTool()); }
 	private void ellipse() { swapTool(new EllipseTool()); }
-	private void bucket() { }
+	private void bucket() { swapTool(new BucketFillTool()); }
 	
 	public static ToolboxListener getInstance() {
 		if (instance_ == null) instance_ = new ToolboxListener();

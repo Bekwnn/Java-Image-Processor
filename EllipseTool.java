@@ -30,6 +30,7 @@ public class EllipseTool extends Tool {
 		g2d.draw(new Ellipse2D.Double(minX, minY, w, h));
 		mip.clearGraphicsLayer();
 		mip.updateCombinedImage();
+		LayerBox.getInstance().updateLayerBox();
 	}
 	
 	public void mouseDragged(MouseEvent e) {

@@ -25,6 +25,7 @@ public class LineTool extends Tool {
 		g2d.drawLine(startX, startY, e.getX(), e.getY());
 		mip.clearGraphicsLayer();
 		mip.updateCombinedImage();
+		LayerBox.getInstance().updateLayerBox();
 	}
 	
 	public void mouseDragged(MouseEvent e) {

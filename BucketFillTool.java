@@ -29,7 +29,6 @@ public class BucketFillTool extends Tool {
 		BufferedImage curLayer = MainImagePanel.getInstance().getLayer();
 		int targetColor = curLayer.getRGB(x, y);
 		int replacementColor = BasicToolbox.getInstance().getPrimaryColor().getRGB();
-		System.out.println(replacementColor+", "+targetColor);
 		if (replacementColor == targetColor)
 			return;
 		pQueue = new ArrayList<Point>();

@@ -3,9 +3,13 @@ import java.awt.geom.*;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
+import java.io.IOException;
 import javax.swing.*;
+import javax.swing.filechooser.*;
+import javax.imageio.ImageIO;
 
 public class MenuListener implements ActionListener {
+	private String currentFilePath;
 
 	public MenuListener(){
 		super();
@@ -18,10 +22,13 @@ public class MenuListener implements ActionListener {
 			newFile();
 		else if (source.getText() == "New Layer")
 			newLayer();
-		/*else if (source.getText() == "Open")
+		else if (source.getText() == "Open")
+			openFile();
 		else if (source.getText() == "Save")
+			saveFile();
 		else if (source.getText() == "Save As")
-		else if (source.getText() == "Cut")
+			saveAsFile();
+		/*else if (source.getText() == "Cut")
 		else if (source.getText() == "Copy")
 		else if (source.getText() == "Paste")
 		else if (source.getText() == "Toolbox")
@@ -32,6 +39,7 @@ public class MenuListener implements ActionListener {
 	}
 	
 	private void newFile() {
+		currentFilePath = null;
 		MainImagePanel.getInstance().newCombinedImage();
 	}
 	
@@ -40,5 +48,30 @@ public class MenuListener implements ActionListener {
 		Graphics2D g2d = newbi.createGraphics();
 		MainImagePanel mip = MainImagePanel.getInstance();
 		mip.addLayer(newbi);
+	}
+	
+	private void openFile() {
+		JFileChooser chooser = new JFileChooser();
+		int choice = chooser.showOpenDialog(null);
+	}
+	
+	private void saveFile() {
+		if (currentFilePath == null) {
+			saveAsFile();
+			return;
+		}
+		
+	}
+	
+	private void saveAsFile() {
+		JFileChooser chooser = new JFileChooser();
+		int choice = chooser.showSaveDialog(null);
+		if (choice == JFileChooser.APPROVE_OPTION) {
+			try {
+				ImageIO.write(MainImagePanel.getInstance().getCombined(), "png", chooser.getSelectedFile());
+			} catch (IOException e) {
+				System.out.println("Error saving.");
+			}
+		}
 	}
 }

@@ -16,13 +16,16 @@ public class LayerBox extends JToolBar{
 	public void updateLayerBox() {
 		int j = 0;
 		removeAll();
-		for (BufferedImage i : MainImagePanel.getInstance().getLayers()) {
-			j++;
+		MainImagePanel mip = MainImagePanel.getInstance();
+		for (BufferedImage i : mip.getLayers()) {
 			BufferedImage newi = new BufferedImage(LAYER_ICON_SIZE, LAYER_ICON_SIZE, BufferedImage.TYPE_INT_RGB);
 			Graphics2D g2d = newi.createGraphics();
 			g2d.drawImage(i, 0, 0, LAYER_ICON_SIZE, LAYER_ICON_SIZE, Color.WHITE, null);
-			JButton newButton = new JButton("Layer " + j, new ImageIcon(newi));
+			LayerBoxButton newButton = new LayerBoxButton(j, new ImageIcon(newi));
+			if (j == mip.getLayerIndex())
+				newButton.setBackground(new Color(0.7f, 0.7f, 0.7f));
 			add(newButton);
+			j++;
 		}
 		repaint();
 	}

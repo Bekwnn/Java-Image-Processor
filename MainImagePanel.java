@@ -11,7 +11,7 @@ public class MainImagePanel extends JPanel {
 	private BufferedImage combinedImage;
 	private static MainImagePanel instance_;
 	private ArrayList<BufferedImage> layers = new ArrayList<BufferedImage>();
-	public BufferedImage currentLayer;
+	private BufferedImage currentLayer;
 	private BufferedImage graphicsLayer;
 	private int currentLayerIndex;
 	private Color bgColor = Color.WHITE;
@@ -88,6 +88,15 @@ public class MainImagePanel extends JPanel {
 	public void setLayer(BufferedImage i) {
 		layers.set(currentLayerIndex, i);
 		currentLayer = i;
+	}
+	
+	public int getLayerIndex() {
+		return currentLayerIndex;
+	}
+	
+	public void changeLayer(int index) {
+		currentLayer = layers.get(index);
+		currentLayerIndex = index;
 	}
 	
 	public BufferedImage getCombined() {

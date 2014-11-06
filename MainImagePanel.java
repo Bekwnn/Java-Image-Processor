@@ -85,6 +85,11 @@ public class MainImagePanel extends JPanel {
 		return currentLayer;
 	}
 	
+	public void setLayer(BufferedImage i) {
+		layers.set(currentLayerIndex, i);
+		currentLayer = i;
+	}
+	
 	public BufferedImage getCombined() {
 		return combinedImage;
 	}

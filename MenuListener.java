@@ -3,13 +3,13 @@ import java.awt.geom.*;
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
-import java.io.IOException;
+import java.io.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 import javax.imageio.ImageIO;
 
 public class MenuListener implements ActionListener {
-	private String currentFilePath;
+	private File currentFile;
 
 	public MenuListener(){
 		super();
@@ -39,7 +39,7 @@ public class MenuListener implements ActionListener {
 	}
 	
 	private void newFile() {
-		currentFilePath = null;
+		currentFile = null;
 		MainImagePanel.getInstance().newCombinedImage();
 	}
 	
@@ -53,12 +53,28 @@ public class MenuListener implements ActionListener {
 	private void openFile() {
 		JFileChooser chooser = new JFileChooser();
 		int choice = chooser.showOpenDialog(null);
+		if (choice == JFileChooser.APPROVE_OPTION) {
+			try {
+				currentFile = chooser.getSelectedFile();
+				newFile();
+				MainImagePanel mip = MainImagePanel.getInstance();
+				mip.setLayer(ImageIO.read(chooser.getSelectedFile()));
+				mip.updateCombinedImage();
+			} catch (IOException e) {
+				System.out.println("Error opening file.");
+			}
+		}
 	}
 	
 	private void saveFile() {
-		if (currentFilePath == null) {
+		if (currentFile == null) {
 			saveAsFile();
 			return;
+		}
+		try {
+			ImageIO.write(MainImagePanel.getInstance().getCombined(), "png", currentFile);
+		} catch (IOException e) {
+			System.out.println("Error saving.");
 		}
 		
 	}
@@ -69,6 +85,7 @@ public class MenuListener implements ActionListener {
 		if (choice == JFileChooser.APPROVE_OPTION) {
 			try {
 				ImageIO.write(MainImagePanel.getInstance().getCombined(), "png", chooser.getSelectedFile());
+				currentFile = chooser.getSelectedFile();
 			} catch (IOException e) {
 				System.out.println("Error saving.");
 			}

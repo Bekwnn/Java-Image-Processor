@@ -13,14 +13,12 @@ public class EraserTool extends Tool {
 	}
 	
 	public void mousePressed(MouseEvent e) {
-		//startX = e.getX();
-		//startY = e.getY();
-		//System.out.println("Mouse Pressed: "+startX+", "+startY);
+		mouseDragged(e);
 	}
 	
 	public void mouseReleased(MouseEvent e) {
 		mouseDragged(e);
-		LayerBox.getInstance().updateLayerBox();
+		LayerBox.getInstance().updateLayerBox();	//update layer box on mouse release
 	}
 	
 	public void mouseDragged(MouseEvent e) {

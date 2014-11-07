@@ -24,6 +24,7 @@ public class BrushTool extends Tool {
 		LayerBox.getInstance().updateLayerBox();
 	}
 	
+	//draws a line between mouse dragged positions; currently doesn't support transparency very well
 	public void mouseDragged(MouseEvent e) {
 		MainImagePanel mip = MainImagePanel.getInstance();
 		Graphics2D g2d = mip.getLayerGraphics();

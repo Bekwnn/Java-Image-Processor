@@ -71,6 +71,7 @@ public class BasicToolbox extends JToolBar {
 		}
 	}
 	
+	//adds a button which sends String command to ToolboxListener when pressed
 	private void addToToolbox(JButton button, String command) {
 		button.addActionListener(toolboxListener);
 		button.setActionCommand(command);
@@ -82,6 +83,7 @@ public class BasicToolbox extends JToolBar {
 		return instance_;
 	}
 	
+	//allows other classes to access the currently selected colors
 	public Color getSecondaryColor() { return secondaryColor.getColor(); }
 	public Color getPrimaryColor() { return primaryColor.getColor(); }
 }

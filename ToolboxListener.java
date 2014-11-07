@@ -11,6 +11,7 @@ public class ToolboxListener implements ActionListener {
 		super();
 	}
 	
+	//handles action commands
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand() + " pressed.");
 		if (e.getActionCommand() == "BOXSELECT") {
@@ -36,6 +37,7 @@ public class ToolboxListener implements ActionListener {
 		}
 	}
 	
+	//swaps out previous tool's listeners for new tool's listeners
 	private void swapTool(Tool newTool) {
 		MainImagePanel mip = MainImagePanel.getInstance();
 		mip.removeMouseListener(selectedTool);
@@ -45,6 +47,7 @@ public class ToolboxListener implements ActionListener {
 		mip.addMouseMotionListener(selectedTool);
 	}
 	
+	//tool selection functions
 	private void boxSelect() { swapTool(new BoxSelectTool()); }
 	private void brush() { swapTool(new BrushTool()); }
 	private void eraser() { swapTool(new EraserTool()); }

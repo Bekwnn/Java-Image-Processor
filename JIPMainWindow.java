@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
+//the main window. Creates the other nested components
 public class JIPMainWindow extends JFrame{
 	private static JIPMainWindow instance_;
 	public BasicToolbox basicToolbox;

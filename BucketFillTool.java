@@ -25,14 +25,25 @@ public class BucketFillTool extends Tool {
 		mip.updateCombinedImage();
 	}
 	
+	//Queue based flooFill algorithm; very fast
+	//targetColor = the color clicked on that we plan to flood
+	//replacementColor = the color we'll be flooding
 	private void floodFill(int x, int y, boolean[][] processed) {
 		BufferedImage curLayer = MainImagePanel.getInstance().getLayer();
+		
+		//get the colors as int values for comparisons
 		int targetColor = curLayer.getRGB(x, y);
 		int replacementColor = BasicToolbox.getInstance().getPrimaryColor().getRGB();
+		
+		//if the target color is the replacement color, work is already done
 		if (replacementColor == targetColor)
 			return;
+		
+		//create queue and add starting point
 		pQueue = new ArrayList<Point>();
 		pQueue.add(new Point(x, y));
+		
+		//while queue is not empty, flood pixels and add their unprocessed neighbors to the queue
 		while (!pQueue.isEmpty()) {
 			Point n = pQueue.remove(pQueue.size()-1);
 			if (curLayer.getRGB(n.x, n.y) == targetColor) {

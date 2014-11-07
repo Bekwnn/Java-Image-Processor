@@ -1,3 +1,4 @@
+//opens JIPMainWindow, fields dictate size of current image
 public class JIP {
 	public static int iWidth = 500;
 	public static int iHeight = 500;

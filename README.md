@@ -7,4 +7,4 @@ Supports:
 - brush, eraser, line, rectangle, ellipse, and bucket tools
 - [transparency and layers](http://a.pomf.se/afcyef.png)
 - file [saving](http://a.pomf.se/acnvih.png) and [opening](http://a.pomf.se/aowlxd.png)
-- some features not yet implemented
+- some features not yet implemented (cut/copy/paste, box select, undo/redo, layer moving/deleting, image resizing)
